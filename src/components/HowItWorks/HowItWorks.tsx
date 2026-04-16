@@ -47,10 +47,10 @@ export const HowItWorks = () => {
               <div className={styles.iconBox}>{icon}</div>
               <span className={styles.stepBadge}>{step}</span>
             </div>
-            <SubheadingText as="h3" weight="semibold" className={styles.cardLabel}>
+            <SubheadingText as="h3" weight="semibold" variant="white">
               {label}
             </SubheadingText>
-            <BodyText className={styles.cardDesc} weight="light">
+            <BodyText variant="white" weight="light">
               {description}
             </BodyText>
           </div>

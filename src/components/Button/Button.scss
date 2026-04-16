@@ -1,5 +1,5 @@
 @use '../../styles/palette';
-@use '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .container {
   display: inline-flex;
@@ -8,7 +8,7 @@
   gap: 8px;
   width: 100%;
   cursor: pointer;
-  padding: 12px 24px;
+  padding: 12px 28px;
   border-radius: 10px;
   border: none;
   transition:
@@ -16,10 +16,24 @@
     transform 0.15s ease,
     box-shadow 0.2s ease,
     background-color 0.2s ease;
-  font-size: variables.$font-size-base;
-  font-weight: variables.$font-weight-medium;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
   position: relative;
   font-family: inherit;
+  white-space: nowrap;
+
+  // Tablet
+  @media screen and (max-width: $small-breakpoint) {
+    padding: 11px 22px;
+    font-size: $font-size-sm;
+  }
+
+  // Mobile
+  @media screen and (max-width: $mobile-breakpoint) {
+    padding: 10px 18px;
+    font-size: $font-size-sm;
+    gap: 6px;
+  }
 
   &:active {
     transform: scale(0.98);
@@ -70,7 +84,7 @@
 
 .solid {
   border: 1px solid var(--text-secondary);
-  border-radius: 400px;
+  border-radius: $radius-full;
 }
 
 .loader {
@@ -81,6 +95,11 @@
   height: 16px;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 @keyframes spin {

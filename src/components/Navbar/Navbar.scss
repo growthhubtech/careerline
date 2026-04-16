@@ -71,12 +71,9 @@ nav {
       }
     }
 
-    // CTA button inside nav — tighten to remove outdated over-tracking
+    // CTA button inside nav — constrain width so it doesn't stretch
     button:not(.theme-toggle) {
-      border-radius: $radius-2xl !important;
-      padding: 10px 24px !important;
-      font-size: $font-size-sm !important;
-      letter-spacing: 0 !important;
+      width: auto;
     }
   }
 
@@ -293,9 +290,5 @@ nav {
 
   button {
     width: 100%;
-    border-radius: $radius-xl !important;
-    padding: 12px 24px !important;
-    font-size: $font-size-base !important;
-    letter-spacing: 0 !important;
   }
 }

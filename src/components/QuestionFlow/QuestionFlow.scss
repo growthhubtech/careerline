@@ -6,13 +6,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 80px 24px 48px; // top offset accounts for fixed navbar
   background-color: var(--bg-primary);
 
   @include mobile-only {
-    padding: 16px;
+    padding: 72px 16px 32px;
     align-items: flex-start;
-    padding-top: 40px;
   }
 }
 
@@ -21,16 +20,19 @@
   flex-direction: column;
   gap: 32px;
   padding: 48px;
-  max-width: 800px;
+  max-width: 680px;
   width: 100%;
-  background-color: var(--bg-primary);
-  border-top-right-radius: 24px;
-  border-bottom-left-radius: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-secondary);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 4px rgba(0, 0, 0, 0.04);
 
   @include mobile-only {
-    padding: 24px 16px;
+    padding: 28px 20px;
     gap: 24px;
+    border-radius: 16px;
   }
 }
 
@@ -44,10 +46,10 @@
   font-weight: $font-weight-normal;
   padding: 0;
   transition: opacity 0.2s ease-in-out;
-}
 
-.backLink:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .progressBar {
@@ -61,7 +63,8 @@
 .progressFill {
   height: 100%;
   background-color: var(--button-primary);
-  transition: width 0.3s ease-in-out;
+  border-radius: 3px;
+  transition: width 0.35s ease-in-out;
 }
 
 .optionItem {
@@ -69,21 +72,22 @@
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  text-align: left;
 
   @include mobile-only {
     padding: 14px 12px;
     gap: 12px;
   }
-}
 
-.optionItem:hover {
-  border-color: var(--button-primary);
-  background-color: var(--card-bg);
+  &:hover {
+    border-color: var(--button-primary);
+    background-color: var(--card-bg);
+  }
 }
 
 .optionSelected {
@@ -101,51 +105,171 @@
 }
 
 .radioSelected {
-  border-color: var(--button-primary);
   border: 6px solid var(--button-primary);
 }
 
-.actionBar {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-}
+// ─── Skeleton loader ────────────────────────────────────────────────────────
 
-// Inline question-fetch loading state
-.loadingQuestions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 48px 0;
-}
-
-.questionsSpinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border-color);
-  border-top-color: var(--button-primary);
-  border-radius: 50%;
-  animation: spinQ 0.75s linear infinite;
-}
-
-@keyframes spinQ {
-  to {
-    transform: rotate(360deg);
+@keyframes shimmer {
+  0% {
+    background-position: -600px 0;
+  }
+  100% {
+    background-position: 600px 0;
   }
 }
 
-// Free-text and number inputs inside the question flow
+.skeletonBase {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-primary) 25%,
+    var(--border-color) 50%,
+    var(--bg-primary) 75%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px;
+  max-width: 680px;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+
+  @include mobile-only {
+    padding: 28px 20px;
+    gap: 24px;
+  }
+}
+
+.skeletonLine {
+  @extend .skeletonBase;
+  height: 14px;
+}
+
+.skeletonBackLink {
+  @extend .skeletonBase;
+  height: 14px;
+  width: 140px;
+}
+
+.skeletonTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .skeletonLine:first-child {
+    width: 85%;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .skeletonLine:last-child {
+    width: 60%;
+    height: 28px;
+    border-radius: 8px;
+  }
+}
+
+.skeletonSubtitle {
+  @extend .skeletonBase;
+  height: 14px;
+  width: 75%;
+}
+
+.skeletonProgressArea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeletonProgressLabels {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    @extend .skeletonBase;
+    height: 12px;
+    width: 80px;
+  }
+}
+
+.skeletonProgressBar {
+  @extend .skeletonBase;
+  height: 6px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.skeletonQuestion {
+  @extend .skeletonBase;
+  height: 22px;
+  width: 80%;
+  border-radius: 6px;
+}
+
+.skeletonOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonOption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--bg-primary);
+
+  .skeletonRadio {
+    @extend .skeletonBase;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skeletonLabel {
+    @extend .skeletonBase;
+    height: 14px;
+    flex: 1;
+    max-width: 220px;
+  }
+}
+
+.skeletonActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+
+  span {
+    @extend .skeletonBase;
+    height: 44px;
+    width: 120px;
+    border-radius: 100px;
+  }
+}
+
+// ─── Text / Number inputs ───────────────────────────────────────────────────
+
 .textInput,
 .numberInput {
   width: 100%;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   font-size: $font-size-base;
   font-family: inherit;
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   color: var(--text-primary);
   outline: none;
   transition:

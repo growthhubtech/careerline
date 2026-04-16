@@ -33,10 +33,39 @@ export const QuestionFlow = ({ onComplete }: QuestionFlowProps) => {
   if (isLoading) {
     return (
       <div className="questionWrapper">
-        <div className="questionCard">
-          <div className="loadingQuestions">
-            <div className="questionsSpinner" />
-            <BodyText>Loading questions…</BodyText>
+        <div className="skeletonCard">
+          <div className="skeletonBackLink" />
+
+          <div className="skeletonTitle">
+            <div className="skeletonLine" />
+            <div className="skeletonLine" />
+          </div>
+
+          <div className="skeletonSubtitle" />
+
+          <div className="skeletonProgressArea">
+            <div className="skeletonProgressLabels">
+              <span />
+              <span />
+            </div>
+            <div className="skeletonProgressBar" />
+          </div>
+
+          <div className="d-flex flex-column gap-4">
+            <div className="skeletonQuestion" />
+            <div className="skeletonOptions">
+              {[100, 75, 88, 60].map((w) => (
+                <div key={w} className="skeletonOption">
+                  <div className="skeletonRadio" />
+                  <div className="skeletonLabel" style={{ maxWidth: `${w}%` }} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skeletonActions">
+            <span />
+            <span />
           </div>
         </div>
       </div>

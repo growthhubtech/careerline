@@ -4,12 +4,12 @@
 .hero {
   min-height: 700px;
   background: var(--hero-gradient-color);
-  padding-top: 130px;
+  padding-top: 180px;
   padding-bottom: 60px;
 
   @include mixins.mobile-only {
     min-height: auto;
-    padding-top: 100px;
+    padding-top: 180px;
     padding-bottom: 48px;
   }
 

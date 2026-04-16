@@ -1,0 +1,11 @@
+dist
+coverage
+node_modules
+.docusaurus
+.next
+.nuxt
+build
+.cache
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

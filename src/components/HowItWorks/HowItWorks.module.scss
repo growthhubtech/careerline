@@ -1,0 +1,8 @@
+@use '../../styles/variables.scss' as *;
+
+.howItWorkContainer {
+  @media screen and (max-width: $small-breakpoint) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}

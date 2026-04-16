@@ -1,0 +1,19 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 408px), 1fr));
+  justify-content: center;
+  gap: 24px;
+}
+
+.target {
+  width: 100%;
+  max-width: 408px;
+  height: auto;
+  min-height: 417px;
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}

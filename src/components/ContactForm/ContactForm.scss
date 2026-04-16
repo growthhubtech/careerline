@@ -1,0 +1,120 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/palette.scss' as *;
+
+.contact-form {
+  width: 100%;
+  form {
+    max-width: 100%;
+    background: $bg-primary;
+    padding: 40px 32px;
+    border-radius: 10px;
+  }
+
+  .row {
+    display: flex;
+    gap: 16px;
+
+    .field {
+      flex: 1;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--contact-form-text);
+    }
+
+    input,
+    textarea {
+      padding: 10px 12px;
+      border-radius: $radius-lg;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &::placeholder {
+        color: var(--contact-form-text);
+      }
+
+      &:focus {
+        border-color: var(--contact-page-bg);
+      }
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  .checkbox {
+    input {
+      margin-top: 4px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--contact-form-text);
+
+      a {
+        color: var(--contact-page-bg);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    background: $button-color;
+    color: $text-white;
+    font-size: 16px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--button-secondary);
+    }
+  }
+}
+
+.field {
+  position: relative;
+
+  &.error input,
+  &.error textarea {
+    border-color: var(--text-error);
+  }
+}
+
+.error-message {
+  color: var(--text-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.checkbox-error {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: $small-breakpoint) {
+  .row {
+    flex-direction: column;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}

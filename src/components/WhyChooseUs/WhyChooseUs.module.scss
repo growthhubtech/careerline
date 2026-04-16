@@ -1,0 +1,32 @@
+@use '../../styles/variables.scss' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 70px 32px;
+
+  @media (max-width: $small-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 592px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 50px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.icon {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--button-color);
+}

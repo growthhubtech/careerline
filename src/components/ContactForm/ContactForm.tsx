@@ -1,7 +1,6 @@
 import './ContactForm.scss';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import '../../styles/utilities.scss';
 import * as z from 'zod';
 
 const contactFormSchema = z.object({
@@ -33,7 +32,8 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = () => {
+  const onSubmit = (_data: ContactFormData) => {
+    // TODO: replace alert with a real API call using _data
     alert('Message sent successfully!');
     reset();
   };

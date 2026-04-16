@@ -106,9 +106,29 @@
   flex-shrink: 0;
 }
 
-.courseDescription {
-  color: var(--text-primary);
-  line-height: 1.6;
+.careerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionLabel {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bulletList {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
 }
 
 .progressBar {

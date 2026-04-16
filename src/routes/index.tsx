@@ -1,8 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import { MainLayout } from './MainLayout/MainLayout.tsx';
 import { MinimalLayout } from './MinimalLayout/MinimalLayout.tsx';
-import { Home, Question } from '../pages';
-import { Contact } from '../pages/Contact.tsx';
+import { Home, Question, Contact } from '../pages';
 
 export const getRoutes = (): RouteObject[] => [
   {
@@ -13,7 +12,7 @@ export const getRoutes = (): RouteObject[] => [
         element: <Home />,
       },
       {
-        path: '/contact us',
+        path: '/contact',
         element: <Contact />,
       },
     ],

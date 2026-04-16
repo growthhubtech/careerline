@@ -29,12 +29,7 @@ export const Button = ({
     .join(' ');
 
   return (
-    <button
-      type={type === 'submit' ? 'submit' : type === 'reset' ? 'reset' : 'button'}
-      onClick={onClick}
-      disabled={isDisabled}
-      className={combinedClassName}
-    >
+    <button type={type} onClick={onClick} disabled={isDisabled} className={combinedClassName}>
       {children}
       {isLoading && <span className="loader" />}
     </button>

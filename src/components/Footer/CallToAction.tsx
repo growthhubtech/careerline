@@ -10,14 +10,16 @@ export const CallToAction = () => {
   return (
     <PageContainer>
       <div className="cta">
-        <SubheadingText weight="medium" variant="black">
+        <SubheadingText as="h2" weight="medium" variant="black">
           Ready To Discover And Begin Your Career Path?
         </SubheadingText>
         <BodyText>
           Join people who have found their perfect career path. Start the free test today.
         </BodyText>
         <Button variant="primary" className="mx-auto w-fit" onClick={() => navigate('/question')}>
-          <BodyText variant="white">Take Test</BodyText>
+          <BodyText as="span" variant="white">
+            Take Test
+          </BodyText>
           <LuChevronRight size={24} />
         </Button>
       </div>

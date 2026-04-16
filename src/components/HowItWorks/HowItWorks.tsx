@@ -6,27 +6,27 @@ import styles from './HowItWorks.module.scss';
 import cn from 'classnames';
 import { PageContainer } from '../PageContainer';
 
-export const HowItWorks = () => {
-  const ICON_SIZE = 40;
+const ICON_SIZE = 32;
 
+export const HowItWorks = () => {
   const howItWorks = [
     {
       icon: <HiChartBar size={ICON_SIZE} />,
-      step: 'Step 1',
+      step: '01',
       label: 'Take a test',
-      description: 'Answer a few questions about your basic skill and interest',
+      description: 'Answer a few questions about your basic skills and interests',
     },
     {
       icon: <MdOutlineRecommend size={ICON_SIZE} />,
-      step: 'Step 2',
+      step: '02',
       label: 'Get your recommendation',
-      description: 'Top 3 recommended tech courses with a personalized fitness score',
+      description: 'Top 3 recommended career paths with a personalized fit score',
     },
     {
       icon: <AiOutlineGlobal size={ICON_SIZE} />,
-      step: 'Step 3',
+      step: '03',
       label: 'Start learning',
-      description: 'Begin your tech journey with our carefully structured courses',
+      description: 'Begin your journey with carefully structured courses and resources',
     },
   ];
 
@@ -34,29 +34,25 @@ export const HowItWorks = () => {
     <div>
       <div className="text-center py-13">
         <HeroText variant="black" weight="bold">
-          How It works
+          How It Works
         </HeroText>
         <MediumText weight="medium">
           CareerLine AI, built specifically for your tech transition journey
         </MediumText>
       </div>
-      <PageContainer
-        className={cn(styles.howItWorkContainer, 'd-flex gap-12 py-12 secondary-bg text-white')}
-      >
+      <PageContainer className={cn(styles.howItWorkContainer, 'd-flex gap-6 py-12 secondary-bg')}>
         {howItWorks.map(({ icon, step, label, description }) => (
-          <div key={step} className="">
-            <div className="d-flex items-end mb-6 justify-between">
-              {icon}
-              <BodyText className="text-white">{step}</BodyText>
+          <div key={step} className={styles.card}>
+            <div className={styles.cardTop}>
+              <div className={styles.iconBox}>{icon}</div>
+              <span className={styles.stepBadge}>{step}</span>
             </div>
-            <div>
-              <SubheadingText weight="medium" className="text-white mb-4">
-                {label}
-              </SubheadingText>
-              <BodyText className="text-white" weight="light">
-                {description}
-              </BodyText>
-            </div>
+            <SubheadingText as="h3" weight="semibold" className={styles.cardLabel}>
+              {label}
+            </SubheadingText>
+            <BodyText className={styles.cardDesc} weight="light">
+              {description}
+            </BodyText>
           </div>
         ))}
       </PageContainer>

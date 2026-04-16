@@ -67,7 +67,7 @@ export const Navbar = () => {
         </div>
 
         <div className="nav-actions desktop-nav">
-          <Link to="/contact us">Contact</Link>
+          <Link to="/contact">Contact</Link>
           <Button variant="primary" onClick={() => navigate('/question')}>
             Take A Test
           </Button>
@@ -97,7 +97,7 @@ export const Navbar = () => {
 
       <div className={`mobile-menu ${menuOpen ? 'active' : ''}`}>
         <div className="mobile-menu-content">
-          <Link to="/contact us" className="mobile-nav-link" onClick={closeMenu}>
+          <Link to="/contact" className="mobile-nav-link" onClick={closeMenu}>
             Contact
           </Link>
           <div className="mobile-menu-divider" />

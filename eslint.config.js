@@ -125,13 +125,11 @@ export default tseslint.config(
       // Vite React Refresh
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
-      // Consistency
       'arrow-body-style': ['error', 'as-needed'],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
 
-  // Apply Prettier config last to disable conflicting rules
   {
     rules: {
       'prettier/prettier': 'off',

@@ -1,13 +1,18 @@
 @use '../../styles/variables.scss' as *;
-@use '../../styles/palette.scss' as *;
 
 .contact-form {
   width: 100%;
+
   form {
     max-width: 100%;
-    background: $bg-primary;
+    background: var(--bg-primary);
     padding: 40px 32px;
-    border-radius: 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    @media screen and (max-width: $small-breakpoint) {
+      padding: 24px 16px;
+    }
   }
 
   .row {
@@ -17,6 +22,10 @@
     .field {
       flex: 1;
     }
+
+    @media screen and (max-width: $small-breakpoint) {
+      flex-direction: column;
+    }
   }
 
   .field {
@@ -25,96 +34,111 @@
     margin-bottom: 16px;
 
     label {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
       margin-bottom: 6px;
       color: var(--contact-form-text);
     }
 
     input,
     textarea {
-      padding: 10px 12px;
+      padding: 10px 14px;
       border-radius: $radius-lg;
-      border: 1px solid #d1d5db;
-      font-size: 14px;
+      border: 1px solid var(--border-color);
+      font-size: $font-size-sm;
+      font-family: inherit;
       outline: none;
-      transition: border-color 0.2s;
+      background: var(--bg-primary);
+      color: var(--contact-form-text);
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 
       &::placeholder {
         color: var(--contact-form-text);
+        opacity: 0.5;
       }
 
       &:focus {
-        border-color: var(--contact-page-bg);
+        border-color: var(--button-primary);
+        box-shadow: 0 0 0 3px rgba(0, 65, 255, 0.1);
       }
     }
 
     textarea {
       resize: none;
     }
-  }
 
-  .checkbox {
-    input {
-      margin-top: 4px;
-    }
+    &.error input,
+    &.error textarea {
+      border-color: var(--text-error);
 
-    label {
-      font-size: 13px;
-      color: var(--contact-form-text);
-
-      a {
-        color: var(--contact-page-bg);
-        text-decoration: underline;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.08);
       }
     }
   }
 
-  button {
-    width: 100%;
-    background: $button-color;
-    color: $text-white;
-    font-size: 16px;
-    transition: background 0.2s;
+  .checkbox {
+    input {
+      margin-top: 3px;
+      accent-color: var(--button-primary);
+      cursor: pointer;
+    }
 
-    &:hover {
-      background: var(--button-secondary);
+    label {
+      font-size: $font-size-sm;
+      color: var(--contact-form-text);
+      cursor: pointer;
+
+      a {
+        color: var(--button-primary);
+        text-decoration: underline;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
   }
-}
 
-.field {
-  position: relative;
+  button[type='submit'] {
+    width: 100%;
+    background: var(--button-primary);
+    color: var(--text-white);
+    padding: 12px 24px;
+    border: none;
+    border-radius: $radius-xl;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      opacity 0.2s ease,
+      transform 0.15s ease;
 
-  &.error input,
-  &.error textarea {
-    border-color: var(--text-error);
+    &:hover:not(:disabled) {
+      background: var(--button-secondary);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
   }
 }
 
 .error-message {
   color: var(--text-error);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  font-size: $font-size-xs;
+  margin-top: 4px;
   display: block;
 }
 
 .checkbox-error {
   margin-left: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-@media screen and (max-width: $small-breakpoint) {
-  .row {
-    flex-direction: column;
-  }
-
-  .contact-form {
-    width: 100%;
-  }
+  margin-top: 4px;
 }

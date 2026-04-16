@@ -1,49 +1,21 @@
 import { BodyText, SmallText } from '../Text';
 import './Footer.scss';
-import { Link } from 'react-router-dom';
 import logo from '../../assests/careerLine.svg';
 import { PageContainer } from '../PageContainer';
 
 const careerlineLinks = [
-  {
-    label: 'Overview',
-    href: '#',
-  },
-  {
-    label: 'Features',
-    href: '#',
-  },
-  {
-    label: 'Pricing',
-    href: '#',
-  },
-  {
-    label: 'Careers',
-    href: '#',
-  },
-  {
-    label: 'Help',
-    href: '#',
-  },
-  {
-    label: 'Privacy',
-    href: '#',
-  },
+  { label: 'Overview', href: '#' },
+  { label: 'Features', href: '#' },
+  { label: 'Pricing', href: '#' },
+  { label: 'Careers', href: '#' },
+  { label: 'Help', href: '#' },
+  { label: 'Privacy', href: '#' },
 ];
 
 const footerLinks = [
-  {
-    label: 'Terms',
-    href: '#',
-  },
-  {
-    label: 'Privacy',
-    href: '#',
-  },
-  {
-    label: 'Cookies',
-    href: '#',
-  },
+  { label: 'Terms', href: '#' },
+  { label: 'Privacy', href: '#' },
+  { label: 'Cookies', href: '#' },
 ];
 
 export const Footer = () => (
@@ -55,9 +27,9 @@ export const Footer = () => (
 
     <div className="footer-links d-flex gap-4 text-sm flex-wrap justify-center">
       {careerlineLinks.map(({ label, href }) => (
-        <Link to={href} key={label} className="text-decoration-none">
+        <a href={href} key={label} className="text-decoration-none">
           <SmallText className="text-white">{label}</SmallText>
-        </Link>
+        </a>
       ))}
     </div>
 
@@ -69,9 +41,9 @@ export const Footer = () => (
       </BodyText>
       <div className="footer-legal d-flex gap-4">
         {footerLinks.map(({ label, href }) => (
-          <Link to={href} key={label} className="text-decoration-none">
+          <a href={href} key={label} className="text-decoration-none">
             <SmallText className="text-white">{label}</SmallText>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

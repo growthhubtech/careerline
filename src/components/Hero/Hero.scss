@@ -4,38 +4,36 @@
 .hero {
   min-height: 700px;
   background: var(--hero-gradient-color);
-  padding-top: 150px;
+  padding-top: 130px;
+  padding-bottom: 60px;
 
   @include mixins.mobile-only {
     min-height: auto;
     padding-top: 100px;
-    padding-bottom: 40px;
+    padding-bottom: 48px;
   }
 
   .hero-main {
     @include mixins.flex-center;
     width: 100%;
-    align-items: start;
-    gap: 10px;
+    align-items: center;
+    gap: 48px;
     position: relative;
 
     @media screen and (max-width: $medium-breakpoint) {
       flex-direction: column;
+      gap: 40px;
     }
   }
 
   .btn-box {
-    @include mixins.flex-between;
+    display: flex;
     gap: 16px;
+    margin-top: 40px;
 
     @media screen and (max-width: $medium-breakpoint) {
       flex-direction: column;
       width: 100%;
-    }
-
-    img {
-      position: absolute;
-      left: 20px;
     }
 
     button {
@@ -45,21 +43,23 @@
     }
   }
 
-  .red-span-text {
-    color: var(--text-error);
+  // Gradient accent for headline highlight — replaces the harsh #ff0000
+  .hero-accent {
+    background: linear-gradient(90deg, var(--button-primary) 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .text-box {
-    word-spacing: 1.5px;
-    letter-spacing: 1.5px;
+    // Removed: word-spacing and letter-spacing — dated early-2010s look
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     @media screen and (max-width: $medium-breakpoint) {
       width: 100%;
-    }
-
-    div {
-      margin-bottom: 20px;
     }
   }
 
@@ -68,6 +68,7 @@
     right: 0;
     bottom: -100%;
     z-index: -99;
+    pointer-events: none;
 
     @include mixins.mobile-only {
       display: none;

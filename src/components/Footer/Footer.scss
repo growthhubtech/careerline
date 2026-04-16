@@ -4,10 +4,7 @@
 .footer-container {
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  min-height: 334px;
-  height: auto;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 48px 0 36px;
 }
 
 .footer-brand img {
@@ -24,13 +21,23 @@
   @include mobile-only {
     gap: 12px;
   }
+
+  a {
+    opacity: 0.8;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .hr-divider {
   width: 100%;
+  border: none;
   border-top: 1px solid var(--border-color);
-  margin: 16px 0;
-  opacity: 0.3;
+  opacity: 0.2;
+  margin: 12px 0;
 }
 
 .footer-bottom {
@@ -52,19 +59,41 @@
   }
 }
 
+// CTA section — full-bleed modern card with gradient border
 .cta {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 42px;
-  margin: 32px;
-  border-radius: 16px;
-  background-color: var(--footer-color);
+  gap: 20px;
+  padding: 56px 40px;
+  margin: 40px 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--footer-color) 0%, rgba(211, 223, 254, 0.4) 100%);
+  border: 1px solid rgba(0, 65, 255, 0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle radial glow behind the CTA
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 60% 60% at 50% 0%,
+      rgba(0, 65, 255, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  [data-theme='dark'] & {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 100%);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
 
   @include mobile-only {
-    padding: 24px 16px;
-    margin: 16px;
+    padding: 36px 20px;
+    margin: 24px 0;
   }
 }
